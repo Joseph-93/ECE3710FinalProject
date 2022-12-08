@@ -125,11 +125,13 @@ int main(void){
 	WindSpeed_setup();
 	ADC1_setup();
 	
-
+	GPIOC->MODER &= 0xFFFFDFFF;
 	
 	while(1)
 	{
-//		USART2_fout((float)(read_Tref()));
-//		delay_ms(2000);
+			GPIOC->ODR |= 0x00000040;
+			delay_us(16);
+			GPIOC->ODR &= 0xFFFFFFBF;
+			delay_us(16);
 	}
 }

@@ -433,6 +433,16 @@
               <FileType>5</FileType>
               <FilePath>.\ADC.h</FilePath>
             </File>
+            <File>
+              <FileName>DHT22.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DHT22.c</FilePath>
+            </File>
+            <File>
+              <FileName>DHT22.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\DHT22.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
