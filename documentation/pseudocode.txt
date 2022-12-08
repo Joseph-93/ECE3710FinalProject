@@ -1,0 +1,37 @@
+button interrupt psedocode
+begin
+	read value
+	write to lcd
+end
+
+uart interrupt pseudocode
+begin
+	check rxne
+	read rx register
+	store in buffer???
+	if recieved T/t
+		display temperature
+	if recieved H/h
+		display humidity
+	if recieved W/w
+		display windspeed
+	if recieved P/p
+		display pressure
+	else
+		do nothing
+	display uart menu??
+end
+
+main pseudocode
+Begin
+	setup uart
+	setup adc
+	setup lcd
+	display menu on lcd
+	diplay uart menu??
+	
+	loop forever
+End
+	
+	
+	

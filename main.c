@@ -1,23 +1,27 @@
 #include "stm32l476xx.h"
 #include "LCD.h"
 #include <string.h>
+#include "uart.h"
+#include "ADC.h"
 
 static char temp[50];
 static char humidity[50];
 static char pressure[50];
 
-void set_globals()
-{
-	temp = {0};
-	humidity = {0};
-	pressure = {0};
-}
+//void set_globals()
+//{
+//	temp = 0;
+//	humidity = 0;
+//	pressure = 0;
+//}
 
 //Yellow Button | PC0 | Temperature
+
 void EXTI0_IRQHandler(void) {
 	if ((EXTI->PR1 & EXTI_PR1_PIF0) != 0) {
+		//read value
 		LCD_Clear();
-		LCD_DisplayString(0, (unsigned char*)"Temperature: X");
+		LCD_DisplayString(0, (unsigned char*)"Temperature: ");
 		EXTI->PR1 |= EXTI_PR1_PIF0;
 	}
 	return;
@@ -26,6 +30,7 @@ void EXTI0_IRQHandler(void) {
 //Blue Button | PC1 | Humidity
 void EXTI1_IRQHandler(void) {
 	if ((EXTI->PR1 & EXTI_PR1_PIF1) != 0) {
+		//read value
 		LCD_Clear();
 		LCD_DisplayString(0, (unsigned char*)"Humidity: X");
 		EXTI->PR1 |= EXTI_PR1_PIF1;
@@ -36,6 +41,7 @@ void EXTI1_IRQHandler(void) {
 //Green Button | PC2 | Wind Speed
 void EXTI2_IRQHandler(void) {
 	if ((EXTI->PR1 & EXTI_PR1_PIF2) != 0) {
+		//read value
 		LCD_Clear();
 		LCD_DisplayString(0, (unsigned char*)"Wind Speed: X");
 		EXTI->PR1 |= EXTI_PR1_PIF2;
@@ -46,6 +52,7 @@ void EXTI2_IRQHandler(void) {
 //Red Button | PC3 | Air Pressure
 void EXTI3_IRQHandler(void) {
 	if ((EXTI->PR1 & EXTI_PR1_PIF3) != 0) {
+		//read value
 		LCD_Clear();
 		LCD_DisplayString(0, (unsigned char*)"Air Pressure: X");
 		EXTI->PR1 |= EXTI_PR1_PIF3;
@@ -104,11 +111,25 @@ int main(void){
 	EXTI->IMR1 |= EXTI_IMR1_IM3;
 	
 	LCD_Init();
+	usart2_init();
+	USART2_Write('s');
+	USART2_Write('t');
+	USART2_Write('a');
+	USART2_Write('r');
+	USART2_Write('t');
+	USART2_Stringout((unsigned char*)"ECE 3710\n");
+	USART2_Stringout((unsigned char*)"Utah State\n");
 	LCD_Clear();
 	LCD_DisplayString(0, (unsigned char*)"ECE 3710");
 	LCD_DisplayString(1, (unsigned char*)"Utah State");
+	WindSpeed_setup();
+	ADC1_setup();
 	
 
 	
-	while(1);
+	while(1)
+	{
+//		USART2_fout((float)(read_Tref()));
+//		delay_ms(2000);
+	}
 }
