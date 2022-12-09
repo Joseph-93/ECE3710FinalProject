@@ -4,10 +4,12 @@
 #include "uart.h"
 #include "ADC.h"
 #include <stdio.h>
-#define UN 2
+#include "DHT22.h"
+#define UN 1
 
 void delay_us(int us)
 {
+	//magic ratio delay (us = us*1.75)
 	unsigned int volatile i = 0;
 	while(i<(UN*us))
 	{
@@ -26,34 +28,54 @@ void DHT22_setup()
 	//delay for 30 us
 }
 
-uint8_t read_data(uint8_t* data)
+uint8_t read_hdata(uint8_t* data)
 {
 	int in;
+	int count;
+	int in_high = 0x00000040;
 	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode
 	GPIOC->MODER |= 0x0001000;//set pc6 to output
 	GPIOC->PUPDR |= 0x00001000;// add pullup resistor
 	GPIOC->ODR &= 0xFFFFFFDF;//pull down output for 20-40us?
-	delay_us(48);//delay 30 us(should it be 24?)
+	delay_ms(40);//delay 600 us
 	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode (set to input)
-	delay_us(121);//wait for 75 us
 	in = (GPIOC->IDR & 1<<6);
-	if(in == 1)//if pc6 == 1
+	while(in == in_high)
 	{
-		return(0);// 	sensor fail
-							//		return 0
-	}
-	else //else
+		in = (GPIOC->IDR & 1<<6);
+	}//wait until pulldown
+	while(in == in_high)
 	{
-		//	proceed reading data 
-	  for(int i = 0; i < 40; i++)//	for (i = 0, i <40, i++)
+		in = (GPIOC->IDR & 1<<6);
+	}//wait until sensor pulls up
+	while(in == in_high)
+	{
+		in = (GPIOC->IDR & 1<<6);
+	}//wait for sensor to go low (80ms) this is the start of data bit1
+	for(int i = 0; i<40;i++)//repeat 40 times
+	{
+		while(in == in_high)
 		{
-	//			wait 65 us
-	//			if pc6 high
-	//				data[i] = 1
-	//			else
-//					data[i]= 0
-		}//	endfor
-	//return(1)
+			in = (GPIOC->IDR & 1<<6);
+		}//wait for sensor to go back up (first data bit)
+		while(in == in_high)
+		{
+			in = (GPIOC->IDR & 1<<6);
+			count++;
+		}//while sensor low
+				//count time high
+				//if time hih < 50 0
+				//if time high > 50 1
+		if(count <= 50)
+		{
+			data[i] = 0;
+		}
+		else
+		{
+			data[i] = 1;
+		}
+	}
+	return(1);//return(1)
 	
 }
 

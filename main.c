@@ -3,6 +3,7 @@
 #include <string.h>
 #include "uart.h"
 #include "ADC.h"
+#include "DHT22.h"
 
 static char temp[50];
 static char humidity[50];
@@ -129,9 +130,9 @@ int main(void){
 	
 	while(1)
 	{
-			GPIOC->ODR |= 0x00000040;
-			delay_us(16);
-			GPIOC->ODR &= 0xFFFFFFBF;
-			delay_us(16);
+//			GPIOC->ODR |= 0x00000040;
+//			delay_us(31);
+//			GPIOC->ODR &= 0xFFFFFFBF;
+//			delay_us(140);
 	}
 }

@@ -4,6 +4,7 @@
 #include "uart.h"
 #include "ADC.h"
 #include <stdio.h>
+#include "DHT22.h"
 #define BufferSize 32
 
 static uint8_t USART2_Buffer_Rx[BufferSize];
@@ -68,7 +69,14 @@ void USART2_IRQHandler(void) {
 	}
 	else if(in == 'H'|| in == 'h')
 	{
-		USART2_Write('2');
+		//USART2_Write('2');
+		uint8_t data[4];
+		read_hdata(data);
+		for(int i = 0; i<40; i++)
+		{
+			USART2_Write(data[i]);
+		}
+		
 	}
 	else if(in == 'W'|| in == 'w')
 	{
