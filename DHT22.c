@@ -17,29 +17,42 @@ void delay_us(int us)
 	
 void DHT22_setup()
 {
-	//GPIOC->MODER &= 0xFFFFCFFF;//set pc6 to output
-	// add pullup resistor
-	//GPIOC->ODR //pull down output for 20-40us?
-	// change to input
+	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode
+	GPIOC->MODER |= 0x0001000;//set pc6 to output
+	GPIOC->PUPDR |= 0x00001000;// add pullup resistor
+	GPIOC->ODR &= 0xFFFFFFDF;//pull down output for 20-40us?
+	delay_us(48);//delay 30 us(should it be 24?)
+	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode (set to input)
 	//delay for 30 us
 }
 
 uint8_t read_data(uint8_t* data)
 {
-	//wait for 75 us
-	//check pc6
-	//if pc6 == 1
-	// 	sensor fail
-//		return 0
-	//else
-	//	proceed reading data 
-	//	for (i = 0, i <40, i++)
+	int in;
+	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode
+	GPIOC->MODER |= 0x0001000;//set pc6 to output
+	GPIOC->PUPDR |= 0x00001000;// add pullup resistor
+	GPIOC->ODR &= 0xFFFFFFDF;//pull down output for 20-40us?
+	delay_us(48);//delay 30 us(should it be 24?)
+	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode (set to input)
+	delay_us(121);//wait for 75 us
+	in = (GPIOC->IDR & 1<<6);
+	if(in == 1)//if pc6 == 1
+	{
+		return(0);// 	sensor fail
+							//		return 0
+	}
+	else //else
+	{
+		//	proceed reading data 
+	  for(int i = 0; i < 40; i++)//	for (i = 0, i <40, i++)
+		{
 	//			wait 65 us
 	//			if pc6 high
 	//				data[i] = 1
 	//			else
 //					data[i]= 0
-	//	endfor
+		}//	endfor
 	//return(1)
 	
 }
