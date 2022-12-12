@@ -3,135 +3,73 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.35.0.0
-Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Brady Forbush, Utah State University, LIC=----
+IDE-Version: µVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Paul bradford, usu, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.35.0.2
+Toolchain:       MDK-Lite  Version: 5.37.0.0
 Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
-C Compiler:      ArmClang.exe V6.16
-Assembler:       Armasm.exe V6.16
-Linker/Locator:  ArmLink.exe V6.16
-Library Manager: ArmAr.exe V6.16
-Hex Converter:   FromElf.exe V6.16
-CPU DLL:         SARMCM3.DLL V5.35.0.2
-Dialog DLL:      DCM.DLL V1.17.3.0
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
 Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
-Dialog DLL:      TCM.DLL V1.53.0.0
+Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
-C:\Users\A02235889\Documents\GitHub\ECE3710FinalProject\FinalProject.uvprojx
-Project File Date:  12/08/2022
+C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\FinalProject.uvprojx
+Project File Date:  12/10/2022
 
 <h2>Output:</h2>
-*** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-DHT22.c(5): warning: In file included from...
+uart.c(5): warning: In file included from...
 ./ADC.h(13): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-DHT22.c(7): warning: In file included from...
+uart.c(7): warning: In file included from...
 ./DHT22.h(4): warning: In file included from...
 ./DHT22.h(10): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-DHT22.c(7): warning: In file included from...
+uart.c(7): warning: In file included from...
 ./DHT22.h(10): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-DHT22.c(14): warning: comparison of integers of different signs: 'volatile unsigned int' and 'int' [-Wsign-compare]
-        while(i<(UN*us))
-              ~^ ~~~~~
-DHT22.c(122): warning: no newline at end of file [-Wnewline-eof]
- }*/
-    ^
-DHT22.c(64): warning: variable 'count' is uninitialized when used here [-Wuninitialized]
-                        count++;
-                        ^~~~~
-DHT22.c(34): note: initialize the variable 'count' to silence this warning
-        int count;
-                 ^
-                  = 0
-6 warnings generated.
-compiling DHT22.c...
-main.c(5): warning: In file included from...
-./ADC.h(13): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
-main.c(6): warning: In file included from...
-./DHT22.h(4): warning: In file included from...
-./DHT22.h(10): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
-main.c(6): warning: In file included from...
-./DHT22.h(10): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
-main.c(21): warning: no previous prototype for function 'EXTI0_IRQHandler' [-Wmissing-prototypes]
-void EXTI0_IRQHandler(void) {
-     ^
-main.c(21): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void EXTI0_IRQHandler(void) {
-^
-static 
-main.c(32): warning: no previous prototype for function 'EXTI1_IRQHandler' [-Wmissing-prototypes]
-void EXTI1_IRQHandler(void) {
-     ^
-main.c(32): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void EXTI1_IRQHandler(void) {
-^
-static 
-main.c(43): warning: no previous prototype for function 'EXTI2_IRQHandler' [-Wmissing-prototypes]
-void EXTI2_IRQHandler(void) {
-     ^
-main.c(43): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void EXTI2_IRQHandler(void) {
-^
-static 
-main.c(54): warning: no previous prototype for function 'EXTI3_IRQHandler' [-Wmissing-prototypes]
-void EXTI3_IRQHandler(void) {
-     ^
-main.c(54): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void EXTI3_IRQHandler(void) {
-^
-static 
-main.c(121): warning: passing 'unsigned char *' to parameter of type 'char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-        USART2_Stringout((unsigned char*)"ECE 3710\n");
-                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./uart.h(11): note: passing argument to parameter 'out' here
-void USART2_Stringout(char* out);
-                            ^
-main.c(122): warning: passing 'unsigned char *' to parameter of type 'char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
-        USART2_Stringout((unsigned char*)"Utah State\n");
-                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-./uart.h(11): note: passing argument to parameter 'out' here
-void USART2_Stringout(char* out);
-                            ^
-main.c(8): warning: unused variable 'temp' [-Wunused-variable]
-static char temp[50];
+uart.c(51): warning: unused variable 'i' [-Wunused-variable]
+        int i = 0;
             ^
-main.c(9): warning: unused variable 'humidity' [-Wunused-variable]
-static char humidity[50];
-            ^
-main.c(10): warning: unused variable 'pressure' [-Wunused-variable]
-static char pressure[50];
-            ^
-12 warnings generated.
-compiling main.c...
+uart.c(61): warning: implicit conversion loses integer precision: 'volatile uint16_t' (aka 'volatile unsigned short') to 'char' [-Wimplicit-int-conversion]
+                in = USART2->RDR;
+                   ~ ~~~~~~~~^~~
+uart.c(107): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+        sprintf(out, "%f" , data);
+        ~~~~~~~             ^~~~
+uart.c(10): warning: unused variable 'USART2_Buffer_Rx' [-Wunused-variable]
+static uint8_t USART2_Buffer_Rx[BufferSize];
+               ^
+uart.c(11): warning: unused variable 'Rx2_Counter' [-Wunused-variable]
+static uint32_t Rx2_Counter;
+                ^
+8 warnings generated.
+compiling uart.c...
 linking...
-Program Size: Code=8436 RO-data=584 RW-data=0 ZI-data=1632  
-".\FinalProject.axf" - 0 Error(s), 18 Warning(s).
+Program Size: Code=8964 RO-data=588 RW-data=0 ZI-data=1632  
+".\FinalProject.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32L4xx_DFP.2.6.0.pack
-                Keil.STM32L4xx_DFP.2.6.0
+                http://www.keil.com/pack/Keil.STM32L4xx_DFP.2.6.1.pack
+                Keil.STM32L4xx_DFP.2.6.1
                 STMicroelectronics STM32L4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include
+  C:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include
 
 <h2>Collection of Component Files used:</h2>
 Build Time Elapsed:  00:00:01

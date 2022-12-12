@@ -70,13 +70,14 @@ void USART2_IRQHandler(void) {
 	else if(in == 'H'|| in == 'h')
 	{
 		//USART2_Write('2');
-		uint8_t data[4];
+		uint8_t data[40];
 		read_hdata(data);
 		for(int i = 0; i<40; i++)
 		{
-			USART2_Write(data[i]);
+			USART2_fout((float)data[i]);
+			
 		}
-		
+		USART2_Write('!');
 	}
 	else if(in == 'W'|| in == 'w')
 	{
