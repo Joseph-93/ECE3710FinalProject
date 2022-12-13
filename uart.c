@@ -32,9 +32,6 @@ void usart2_init()
 	USART2->CR1 |= USART_CR1_UE;
 	while ((USART2->ISR & USART_ISR_TEACK) == 0);
 	while ((USART2->ISR & USART_ISR_REACK) == 0);
-	USART2_Write('g');
-	USART2_Write('o');
-	USART2_Write('\n');
 	
 	USART2->CR1 |= USART_CR1_RXNEIE;
 	USART2->CR1 &= ~USART_CR1_TXEIE;
@@ -172,7 +169,8 @@ void USART2_IRQHandler(void) {
 		//USART2_Write('1');
 		w_raw = read_Wind();
 		USART2_fout((float)(w_raw));
-
+		w_v = (pow(10.0f,((float)w_raw/1120.0f))/76.0f)-1.0f;
+		USART2_fout((float)(w_v));
 		//read temp value
 		//dispaly temp
 	}

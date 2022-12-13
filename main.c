@@ -116,9 +116,14 @@ void EXTI1_IRQHandler(void) {
 void EXTI2_IRQHandler(void) {
 	if ((EXTI->PR1 & EXTI_PR1_PIF2) != 0) {
 		//read value
+		int w_raw = 0;
+		float w_v = 0;
 		LCD_Clear();
-		LCD_DisplayString(0, (unsigned char*)"Wind Speed: X");
+		LCD_DisplayString(0, (unsigned char*)"Wind Speed:");
+		w_raw = read_Wind();
 		EXTI->PR1 |= EXTI_PR1_PIF2;
+		w_v = (pow(10.0f,((float)w_raw/1120.0f))/76.0f)-1.0f;
+		LCD_Displayfloat(1, (float)w_v);
 	}
 	return;
 }
@@ -186,16 +191,11 @@ int main(void){
 	
 	LCD_Init();
 	usart2_init();
-	USART2_Write('s');
-	USART2_Write('t');
-	USART2_Write('a');
-	USART2_Write('r');
-	USART2_Write('t');
-	USART2_Stringout((unsigned char*)"ECE 3710\n");
-	USART2_Stringout((unsigned char*)"Utah State\n");
+	USART2_Stringout((unsigned char*)"Weather station: \n");
+	USART2_Stringout((unsigned char*)"Press T for temperature H for humidity W for windspeed and P for Pressure");
 	LCD_Clear();
-	LCD_DisplayString(0, (unsigned char*)"ECE 3710");
-	LCD_DisplayString(1, (unsigned char*)"Utah State");
+	LCD_DisplayString(0, (unsigned char*)"Weather Station");
+	LCD_DisplayString(1, (unsigned char*)"USU ECE 3700");
 	WindSpeed_setup();
 	ADC1_setup();
 	DHT22_setup();
