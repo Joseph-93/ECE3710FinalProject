@@ -67,10 +67,53 @@ void USART2_IRQHandler(void) {
 	}
 	if(in == 'T'|| in == 't')
 	{
-		//USART2_Write('1');
-		USART2_fout((float)(read_Tref()));
-		//read temp value
-		//dispaly temp
+		//USART2_Write('2');
+		uint8_t data[41];
+		for(int i = 1; i <41; i++)
+		{
+			data[i]='q';
+		}
+		read_hdata(data);
+//		for(int i = 1; i<41; i++)
+//		{
+//			USART2_fout((float)data[i]);
+//			USART2_Write(';');
+//		}
+//		USART2_Write('!');
+		uint8_t out[40];
+		for (int i=1;i<41;i++)
+		{
+			if(data[i]<100)
+			{
+				out[i-1] = 0;
+			}
+			else
+			{
+				out[i-1] = 1;
+			}
+		}
+//			for(int i = 0; i<40; i++)
+//			{
+//				USART2_Write(out[i]+48);
+//			}
+		USART2_Write(' ');
+		//rh part
+		for(int i = 0; i<=15;i++)
+		{
+			rh_raw += out[i]*pow(2,15-i);
+		}
+		rh_dec = (float)rh_raw/10.0f;
+		
+		for(int i = 16; i<32;i++)
+		{
+			t_raw += out[i]*pow(2,15-(i-16));
+		}
+		t_dec = (float)t_raw/10.0f;
+		
+		USART2_fout(t_dec);
+		USART2_Write(' ');
+		USART2_Write('C');
+		//USART2_fout(t_dec);
 	}
 	else if(in == 'H'|| in == 'h')
 	{
@@ -99,10 +142,10 @@ void USART2_IRQHandler(void) {
 				out[i-1] = 1;
 			}
 		}
-		for(int i = 0; i<40; i++)
-		{
-			USART2_Write(out[i]+48);
-		}
+//			for(int i = 0; i<40; i++)
+//			{
+//				USART2_Write(out[i]+48);
+//			}
 		USART2_Write(' ');
 		//rh part
 		for(int i = 0; i<=15;i++)
@@ -118,16 +161,20 @@ void USART2_IRQHandler(void) {
 		t_dec = (float)t_raw/10.0f;
 		
 		USART2_fout(rh_dec);
-		USART2_Write(':');
-		USART2_fout(t_dec);
+		USART2_Write(' ');
+		USART2_Stringout("% relative humidity");
+		//USART2_fout(t_dec);
 	}
 	else if(in == 'W'|| in == 'w')
 	{
-		USART2_fout(internal_temperature_c(read_ADC1()));
+		//USART2_Write('1');
+		USART2_fout((float)(read_Tref()));
+		//read temp value
+		//dispaly temp
 	}
 	else if(in == 'P'|| in == 'p')
 	{
-		USART2_Write('4');
+		USART2_Write('x');
 		//read pressure
 		//display pressure
 	} 

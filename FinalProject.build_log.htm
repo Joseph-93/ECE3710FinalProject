@@ -46,16 +46,25 @@ uart.c(52): warning: unused variable 'i' [-Wunused-variable]
 uart.c(66): warning: implicit conversion loses integer precision: 'volatile uint16_t' (aka 'volatile unsigned short') to 'char' [-Wimplicit-int-conversion]
                 in = USART2->RDR;
                    ~ ~~~~~~~~^~~
-uart.c(110): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
+uart.c(103): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
                         rh_raw += out[i]*pow(2,15-i);
                         ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-uart.c(116): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
+uart.c(109): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
                         t_raw += out[i]*pow(2,15-(i-16));
                         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
-uart.c(90): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+uart.c(83): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
                 uint8_t out[40];
                         ^
-uart.c(153): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+uart.c(153): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
+                        rh_raw += out[i]*pow(2,15-i);
+                        ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+uart.c(159): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
+                        t_raw += out[i]*pow(2,15-(i-16));
+                        ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+uart.c(133): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+                uint8_t out[40];
+                        ^
+uart.c(200): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
         sprintf(out, "%f" , data);
         ~~~~~~~             ^~~~
 uart.c(11): warning: unused variable 'USART2_Buffer_Rx' [-Wunused-variable]
@@ -64,11 +73,11 @@ static uint8_t USART2_Buffer_Rx[BufferSize];
 uart.c(12): warning: unused variable 'Rx2_Counter' [-Wunused-variable]
 static uint32_t Rx2_Counter;
                 ^
-11 warnings generated.
+14 warnings generated.
 compiling uart.c...
 linking...
-Program Size: Code=10448 RO-data=588 RW-data=0 ZI-data=1632  
-".\FinalProject.axf" - 0 Error(s), 11 Warning(s).
+Program Size: Code=10312 RO-data=588 RW-data=0 ZI-data=1632  
+".\FinalProject.axf" - 0 Error(s), 14 Warning(s).
 
 <h2>Software Packages used:</h2>
 
