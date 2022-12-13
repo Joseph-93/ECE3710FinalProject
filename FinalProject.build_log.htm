@@ -3,85 +3,78 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.35.0.0
-Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Brady Forbush, Utah State University, LIC=----
+IDE-Version: µVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Paul bradford, usu, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.35.0.2
+Toolchain:       MDK-Lite  Version: 5.37.0.0
 Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
-C Compiler:      ArmClang.exe V6.16
-Assembler:       Armasm.exe V6.16
-Linker/Locator:  ArmLink.exe V6.16
-Library Manager: ArmAr.exe V6.16
-Hex Converter:   FromElf.exe V6.16
-CPU DLL:         SARMCM3.DLL V5.35.0.2
-Dialog DLL:      DCM.DLL V1.17.3.0
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
 Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
-Dialog DLL:      TCM.DLL V1.53.0.0
+Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
-C:\Users\A02235889\Documents\GitHub\ECE3710FinalProject\FinalProject.uvprojx
+C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\FinalProject.uvprojx
 Project File Date:  12/12/2022
 
 <h2>Output:</h2>
-*** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-uart.c(5): warning: In file included from...
-./ADC.h(13): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
-uart.c(7): warning: In file included from...
-./DHT22.h(4): warning: In file included from...
-./DHT22.h(10): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
-uart.c(7): warning: In file included from...
-./DHT22.h(10): warning: no newline at end of file [-Wnewline-eof]
-#endif
-      ^
-uart.c(52): warning: unused variable 'i' [-Wunused-variable]
-        int i = 0;
-            ^
-uart.c(66): warning: implicit conversion loses integer precision: 'volatile uint16_t' (aka 'volatile unsigned short') to 'char' [-Wimplicit-int-conversion]
-                in = USART2->RDR;
-                   ~ ~~~~~~~~^~~
-uart.c(110): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
-                        rh_raw += out[i]*pow(2,i);
-                        ~~~~~~~^~~~~~~~~~~~~~~~~~
-uart.c(116): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
-                        t_raw += out[i]*pow(2,i-16);
-                        ~~~~~~^~~~~~~~~~~~~~~~~~~~~
-uart.c(122): warning: implicit conversion from 'int' to 'float' may lose precision [-Wimplicit-int-float-conversion]
-                USART2_fout(t_raw);
-                ~~~~~~~~~~~ ^~~~~
-uart.c(153): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
-        sprintf(out, "%f" , data);
-        ~~~~~~~             ^~~~
-uart.c(11): warning: unused variable 'USART2_Buffer_Rx' [-Wunused-variable]
-static uint8_t USART2_Buffer_Rx[BufferSize];
-               ^
-uart.c(12): warning: unused variable 'Rx2_Counter' [-Wunused-variable]
-static uint32_t Rx2_Counter;
-                ^
-11 warnings generated.
+DHT22.c(1): warning: In file included from...
+./stm32l476xx.h(184): error: 'core_cm4.h' file not found
+#include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+         ^~~~~~~~~~~~
+1 error generated.
+compiling DHT22.c...
+ADC.c(1): warning: In file included from...
+./ADC.h(3): warning: In file included from...
+./stm32l476xx.h(184): error: 'core_cm4.h' file not found
+#include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+         ^~~~~~~~~~~~
+1 error generated.
+compiling ADC.c...
+LCD.c(2): warning: In file included from...
+./stm32l476xx.h(184): error: 'core_cm4.h' file not found
+#include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+         ^~~~~~~~~~~~
+1 error generated.
+compiling LCD.c...
+main.c(1): warning: In file included from...
+./stm32l476xx.h(184): error: 'core_cm4.h' file not found
+#include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+         ^~~~~~~~~~~~
+1 error generated.
+compiling main.c...
+assembling startup_stm32l476xx.s...
+uart.c(1): warning: In file included from...
+./stm32l476xx.h(184): error: 'core_cm4.h' file not found
+#include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+         ^~~~~~~~~~~~
+1 error generated.
 compiling uart.c...
-linking...
-Program Size: Code=9856 RO-data=584 RW-data=0 ZI-data=1632  
-".\FinalProject.axf" - 0 Error(s), 11 Warning(s).
+assembling stm32l476xx_constants.s...
+".\FinalProject.axf" - 5 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32L4xx_DFP.2.6.0.pack
-                Keil.STM32L4xx_DFP.2.6.0
+                http://www.keil.com/pack/Keil.STM32L4xx_DFP.2.6.1.pack
+                Keil.STM32L4xx_DFP.2.6.1
                 STMicroelectronics STM32L4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\Admin\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include
+  C:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:00
+Target not created.
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

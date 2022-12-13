@@ -107,13 +107,13 @@ void USART2_IRQHandler(void) {
 		//rh part
 		for(int i = 0; i<=15;i++)
 		{
-			rh_raw += out[i]*pow(2,i);
+			rh_raw += out[i]*pow(2,15-i);
 		}
 		rh_dec = ((~rh_raw)+1)/1000000;
 		
 		for(int i = 16; i<32;i++)
 		{
-			t_raw += out[i]*pow(2,i-16);
+			t_raw += out[i]*pow(2,15-(i-16));
 		}
 		t_dec = ((~t_raw)+1)/1000000;
 		
