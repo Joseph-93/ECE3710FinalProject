@@ -58,9 +58,9 @@ void USART2_Write(uint8_t data)
 
 void USART2_IRQHandler(void) {
 	int rh_raw = 0;
-	float rh_dec;
+	float rh_dec = 0.0f;
 	int t_raw = 0;
-	float t_dec;
+	float t_dec = 0.0f;
 	char in = 0;
 	if(USART2->ISR & USART_ISR_RXNE) {// Check RXNE event 
 		in = USART2->RDR;
@@ -92,16 +92,16 @@ void USART2_IRQHandler(void) {
 		{
 			if(data[i]<100)
 			{
-				out[i-1] = '0';
+				out[i-1] = 0;
 			}
 			else
 			{
-				out[i-1] = '1';
+				out[i-1] = 1;
 			}
 		}
 		for(int i = 0; i<40; i++)
 		{
-			USART2_Write(out[i]);
+			USART2_Write(out[i]+48);
 		}
 		USART2_Write(' ');
 		//rh part
@@ -109,17 +109,17 @@ void USART2_IRQHandler(void) {
 		{
 			rh_raw += out[i]*pow(2,15-i);
 		}
-		rh_dec = ((~rh_raw)+1)/1000000;
+		rh_dec = (float)rh_raw/10.0f;
 		
 		for(int i = 16; i<32;i++)
 		{
 			t_raw += out[i]*pow(2,15-(i-16));
 		}
-		t_dec = ((~t_raw)+1)/1000000;
+		t_dec = (float)t_raw/10.0f;
 		
 		USART2_fout(rh_dec);
 		USART2_Write(':');
-		USART2_fout(t_raw);
+		USART2_fout(t_dec);
 	}
 	else if(in == 'W'|| in == 'w')
 	{
