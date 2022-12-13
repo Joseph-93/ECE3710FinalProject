@@ -73,7 +73,7 @@ int main(void){
 	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOCEN; //enable clock for gpio c
 	GPIOC->MODER &= 0XFFFFFF00; //set gpioc registers 0-3 to input mode
 	GPIOC->PUPDR |= 0X00000055; //set gpioc registers to be internal pull up resistors
-
+	RCC->APB1ENR1 |= RCC_APB1ENR1_TIM6EN;
 	//set up interrupts for each button
 	
 		//set up EXTI
@@ -125,14 +125,22 @@ int main(void){
 	LCD_DisplayString(1, (unsigned char*)"Utah State");
 	WindSpeed_setup();
 	ADC1_setup();
+	DHT22_setup();
+	
+	//TIM6 setup for dht22 reading
+	TIM6->CR1 &= 0xFE00; //Clear out necessary bits
+	TIM6->CR1 |= 0x0A07; //set necessary bits
+	TIM6->CR2 &= 0xFF8F; //RESET TIMER
+	TIM6->CNT |= 0x0000; //Set counter to 0
+	TIM6->PSC &= 0x0000; //set prescaler to none
+	TIM6->ARR |= 0xFFFF; //set auto-reload to MAX
 	
 	GPIOC->MODER &= 0xFFFFDFFF;
 	
 	while(1)
 	{
-//			GPIOC->ODR |= 0x00000040;
-//			delay_us(31);
-//			GPIOC->ODR &= 0xFFFFFFBF;
-//			delay_us(140);
+//		delay_us(360000);
+//		uint8_t data[40];
+//		read_hdata(data);
 	}
 }

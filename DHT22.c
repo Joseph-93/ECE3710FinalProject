@@ -20,63 +20,66 @@ void delay_us(int us)
 void DHT22_setup()
 {
 	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode
-	GPIOC->MODER |= 0x0001000;//set pc6 to output
-	GPIOC->PUPDR |= 0x00001000;// add pullup resistor
-	GPIOC->ODR &= 0xFFFFFFDF;//pull down output for 20-40us?
-	delay_us(48);//delay 30 us(should it be 24?)
-	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode (set to input)
-	//delay for 30 us
+	GPIOC->MODER |= 0x0005000;//set pc6 to output &7
+	GPIOC->ODR |= 0x00000040;//pull up pc6
 }
-
 uint8_t read_hdata(uint8_t* data)
 {
 	int in;
-	int count;
+	int count = 0;
 	int in_high = 0x00000040;
-	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode
-	GPIOC->MODER |= 0x0001000;//set pc6 to output
-	GPIOC->PUPDR |= 0x00001000;// add pullup resistor
-	GPIOC->ODR &= 0xFFFFFFDF;//pull down output for 20-40us?
-	delay_ms(40);//delay 600 us
+	
+	GPIOC->ODR &= 0xFFFFFFBF;//pull down output
+	delay_us(40000);//delay 1 ms
+	GPIOC->ODR |= 0x00000040;//pull it back up
+	//delay_us(53); //delay 30 us
 	GPIOC->MODER &= 0xFFFFCFFF; //clear pc6 mode (set to input)
-	in = (GPIOC->IDR & 1<<6);
-	while(in == in_high)
+	in = (GPIOC->IDR & 1<<6); //read_ADC1 gpio 6 input
+//	delay_us(280);//wait 160 us
+	while(in == 0) //wait during first low (80 us)
 	{
 		in = (GPIOC->IDR & 1<<6);
-	}//wait until pulldown
-	while(in == in_high)
+	}
+	while(in == in_high) //wait during first high (80 us) 
 	{
 		in = (GPIOC->IDR & 1<<6);
-	}//wait until sensor pulls up
-	while(in == in_high)
+	}
+	
+	for(int i = 0; i<41;i++)//repeat 40 times
 	{
-		in = (GPIOC->IDR & 1<<6);
-	}//wait for sensor to go low (80ms) this is the start of data bit1
-	for(int i = 0; i<40;i++)//repeat 40 times
-	{
-		while(in == in_high)
+		while(in == 0) //wait during first low 
 		{
 			in = (GPIOC->IDR & 1<<6);
-		}//wait for sensor to go back up (first data bit)
-		while(in == in_high)
+		}
+		count = 0;
+		while(in == 0)//wait for start of data (50us)
+		{
+			in = (GPIOC->IDR & 1<<6);
+		}
+		TIM6->CR2 &= 0xFF8F;
+		TIM6->CR2 |= 0x0010;
+		while(in == in_high) //count length of pulse
 		{
 			in = (GPIOC->IDR & 1<<6);
 			count++;
-		}//while sensor low
+		}
+		data[i]=(uint8_t)count;
+		//while sensor low
 				//count time high
 				//if time hih < 50 0
 				//if time high > 50 1
-		if(count <= 50)
-		{
-			data[i] = 0;
-		}
-		else
-		{
-			data[i] = 1;
-		}
+////		if((TIM6->CNT & 0x0000FFFF) <= 700)
+////		{
+////			data[i] = count;
+////		}
+////		else
+////		{
+////			data[i] = count;
+////		}
 	}
-	return(1);//return(1)
+	DHT22_setup();
 	
+	return(1);//return(1)	
 }
 
 /*void start_signal()

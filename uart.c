@@ -5,6 +5,7 @@
 #include "ADC.h"
 #include <stdio.h>
 #include "DHT22.h"
+#include <math.h>
 #define BufferSize 32
 
 static uint8_t USART2_Buffer_Rx[BufferSize];
@@ -56,6 +57,10 @@ void USART2_Write(uint8_t data)
 }
 
 void USART2_IRQHandler(void) {
+	int rh_raw = 0;
+	float rh_dec;
+	int t_raw = 0;
+	float t_dec;
 	char in = 0;
 	if(USART2->ISR & USART_ISR_RXNE) {// Check RXNE event 
 		in = USART2->RDR;
@@ -70,14 +75,51 @@ void USART2_IRQHandler(void) {
 	else if(in == 'H'|| in == 'h')
 	{
 		//USART2_Write('2');
-		uint8_t data[40];
+		uint8_t data[41];
+		for(int i = 1; i <41; i++)
+		{
+			data[i]='q';
+		}
 		read_hdata(data);
+//		for(int i = 1; i<41; i++)
+//		{
+//			USART2_fout((float)data[i]);
+//			USART2_Write(';');
+//		}
+//		USART2_Write('!');
+		uint8_t out[40];
+		for (int i=1;i<41;i++)
+		{
+			if(data[i]<100)
+			{
+				out[i-1] = '0';
+			}
+			else
+			{
+				out[i-1] = '1';
+			}
+		}
 		for(int i = 0; i<40; i++)
 		{
-			USART2_fout((float)data[i]);
-			
+			USART2_Write(out[i]);
 		}
-		USART2_Write('!');
+		USART2_Write(' ');
+		//rh part
+		for(int i = 0; i<=15;i++)
+		{
+			rh_raw += out[i]*pow(2,i);
+		}
+		rh_dec = ((~rh_raw)+1)/1000000;
+		
+		for(int i = 16; i<32;i++)
+		{
+			t_raw += out[i]*pow(2,i-16);
+		}
+		t_dec = ((~t_raw)+1)/1000000;
+		
+		USART2_fout(rh_dec);
+		USART2_Write(':');
+		USART2_fout(t_raw);
 	}
 	else if(in == 'W'|| in == 'w')
 	{
@@ -104,6 +146,10 @@ void USART2_Stringout(char* out)
 void USART2_fout(float data)
 {
 	char out[50];
+	for(int i = 0; i <=50; i++)
+		{
+			out[i]=0;
+		}
 	sprintf(out, "%f" , data);
 	for(int i= 0; i<50;i++)
 	{

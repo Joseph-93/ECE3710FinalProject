@@ -4,8 +4,8 @@
 ".\stm32l476xx_constants.o"
 ".\lcd.o"
 ".\uart.o"
-".\adc.o"
 ".\dht22.o"
+".\adc.o"
 --strict --scatter ".\FinalProject.sct"
 --diag_suppress=L6314W --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
