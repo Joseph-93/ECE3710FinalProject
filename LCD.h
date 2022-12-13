@@ -7,5 +7,5 @@ void LCD_WriteData(unsigned char dat);
 void LCD_Init(void);
 void LCD_Clear(void);
 void LCD_DisplayString(unsigned int line, unsigned char *ptr);
-
+void LCD_Displayfloat(unsigned int line, float in);
 #endif

@@ -27,57 +27,95 @@ Project File Date:  12/12/2022
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-uart.c(5): warning: In file included from...
+main.c(5): warning: In file included from...
 ./ADC.h(13): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-uart.c(7): warning: In file included from...
+main.c(6): warning: In file included from...
 ./DHT22.h(4): warning: In file included from...
 ./DHT22.h(10): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-uart.c(7): warning: In file included from...
+main.c(6): warning: In file included from...
 ./DHT22.h(10): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-uart.c(52): warning: unused variable 'i' [-Wunused-variable]
-        int i = 0;
+main.c(49): warning: implicitly declaring library function 'pow' with type 'double (double, double)' [-Wimplicit-function-declaration]
+                        rh_raw += out[i]*pow(2,15-i);
+                                         ^
+main.c(49): note: include the header <math.h> or explicitly provide a declaration for 'pow'
+main.c(49): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
+                        rh_raw += out[i]*pow(2,15-i);
+                        ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+main.c(55): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
+                        t_raw += out[i]*pow(2,15-(i-16));
+                        ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+main.c(25): warning: variable 'rh_dec' set but not used [-Wunused-but-set-variable]
+                float rh_dec = 0.0f;
+                      ^
+main.c(21): warning: no previous prototype for function 'EXTI0_IRQHandler' [-Wmissing-prototypes]
+void EXTI0_IRQHandler(void) {
+     ^
+main.c(21): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI0_IRQHandler(void) {
+^
+static 
+main.c(97): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
+                        rh_raw += out[i]*pow(2,15-i);
+                        ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+main.c(103): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
+                        t_raw += out[i]*pow(2,15-(i-16));
+                        ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+main.c(75): warning: variable 't_dec' set but not used [-Wunused-but-set-variable]
+                float t_dec = 0.0f;
+                      ^
+main.c(68): warning: no previous prototype for function 'EXTI1_IRQHandler' [-Wmissing-prototypes]
+void EXTI1_IRQHandler(void) {
+     ^
+main.c(68): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI1_IRQHandler(void) {
+^
+static 
+main.c(116): warning: no previous prototype for function 'EXTI2_IRQHandler' [-Wmissing-prototypes]
+void EXTI2_IRQHandler(void) {
+     ^
+main.c(116): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI2_IRQHandler(void) {
+^
+static 
+main.c(127): warning: no previous prototype for function 'EXTI3_IRQHandler' [-Wmissing-prototypes]
+void EXTI3_IRQHandler(void) {
+     ^
+main.c(127): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EXTI3_IRQHandler(void) {
+^
+static 
+main.c(194): warning: passing 'unsigned char *' to parameter of type 'char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+        USART2_Stringout((unsigned char*)"ECE 3710\n");
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./uart.h(11): note: passing argument to parameter 'out' here
+void USART2_Stringout(char* out);
+                            ^
+main.c(195): warning: passing 'unsigned char *' to parameter of type 'char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+        USART2_Stringout((unsigned char*)"Utah State\n");
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./uart.h(11): note: passing argument to parameter 'out' here
+void USART2_Stringout(char* out);
+                            ^
+main.c(8): warning: unused variable 'temp' [-Wunused-variable]
+static char temp[50];
             ^
-uart.c(66): warning: implicit conversion loses integer precision: 'volatile uint16_t' (aka 'volatile unsigned short') to 'char' [-Wimplicit-int-conversion]
-                in = USART2->RDR;
-                   ~ ~~~~~~~~^~~
-uart.c(103): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
-                        rh_raw += out[i]*pow(2,15-i);
-                        ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-uart.c(109): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
-                        t_raw += out[i]*pow(2,15-(i-16));
-                        ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
-uart.c(83): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-                uint8_t out[40];
-                        ^
-uart.c(153): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
-                        rh_raw += out[i]*pow(2,15-i);
-                        ~~~~~~~^~~~~~~~~~~~~~~~~~~~~
-uart.c(159): warning: implicit conversion turns floating-point number into integer: 'double' to 'int' [-Wfloat-conversion]
-                        t_raw += out[i]*pow(2,15-(i-16));
-                        ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
-uart.c(133): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-                uint8_t out[40];
-                        ^
-uart.c(200): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
-        sprintf(out, "%f" , data);
-        ~~~~~~~             ^~~~
-uart.c(11): warning: unused variable 'USART2_Buffer_Rx' [-Wunused-variable]
-static uint8_t USART2_Buffer_Rx[BufferSize];
-               ^
-uart.c(12): warning: unused variable 'Rx2_Counter' [-Wunused-variable]
-static uint32_t Rx2_Counter;
-                ^
-14 warnings generated.
-compiling uart.c...
+main.c(9): warning: unused variable 'humidity' [-Wunused-variable]
+static char humidity[50];
+            ^
+main.c(10): warning: unused variable 'pressure' [-Wunused-variable]
+static char pressure[50];
+            ^
+19 warnings generated.
+compiling main.c...
 linking...
-Program Size: Code=10312 RO-data=588 RW-data=0 ZI-data=1632  
-".\FinalProject.axf" - 0 Error(s), 14 Warning(s).
+Program Size: Code=10864 RO-data=588 RW-data=0 ZI-data=1632  
+".\FinalProject.axf" - 0 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -90,7 +128,7 @@ Package Vendor: Keil
   C:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

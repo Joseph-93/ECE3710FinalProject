@@ -1,6 +1,6 @@
 Dependencies for Project 'FinalProject', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 6180000::V6.18::ARMCLANG
-F (.\main.c)(0x6397E1CF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I C:/Users/paulb/Documents/School/fall2022/ECE3710/github/ECE3710FinalProject/Include-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="537" -DSTM32L476xx-o ./main.o -MD)
+F (.\main.c)(0x6397EFDF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I C:/Users/paulb/Documents/School/fall2022/ECE3710/github/ECE3710FinalProject/Include-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="537" -DSTM32L476xx-o ./main.o -MD)
 I (stm32l476xx.h)(0x63936A8D)
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\core_cm4.h)(0x63936A8D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x625325B8)
@@ -9,17 +9,17 @@ I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\I
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_armclang.h)(0x63936A8D)
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\mpu_armv7.h)(0x63936A8D)
 I (C:\Users\paulb\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x60F03838)
-I (LCD.h)(0x63936A8D)
+I (LCD.h)(0x6397EF3B)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625325B6)
 I (uart.h)(0x63936A8D)
-I (ADC.h)(0x63936A8D)
+I (ADC.h)(0x6397EB7D)
 I (DHT22.h)(0x63954879)
 F (.\startup_stm32l476xx.s)(0x63936A8D)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 537" -Wa,armasm,--pd,"STM32L476xx SETA 1"-o ./startup_stm32l476xx.o)
 F (.\stm32l476xx.h)(0x63936A8D)()
 F (.\stm32l476xx_constants.s)(0x63936A8D)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 537" -Wa,armasm,--pd,"STM32L476xx SETA 1"-o ./stm32l476xx_constants.o)
-F (.\LCD.h)(0x63936A8D)()
-F (.\LCD.c)(0x63936A8D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I C:/Users/paulb/Documents/School/fall2022/ECE3710/github/ECE3710FinalProject/Include-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="537" -DSTM32L476xx-o ./lcd.o -MD)
-I (LCD.h)(0x63936A8D)
+F (.\LCD.h)(0x6397EF3B)()
+F (.\LCD.c)(0x6397EF3B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I C:/Users/paulb/Documents/School/fall2022/ECE3710/github/ECE3710FinalProject/Include-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="537" -DSTM32L476xx-o ./lcd.o -MD)
+I (LCD.h)(0x6397EF3B)
 I (stm32l476xx.h)(0x63936A8D)
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\core_cm4.h)(0x63936A8D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x625325B8)
@@ -28,20 +28,26 @@ I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\I
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_armclang.h)(0x63936A8D)
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\mpu_armv7.h)(0x63936A8D)
 I (C:\Users\paulb\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x60F03838)
-F (.\uart.h)(0x63936A8D)()
-F (.\uart.c)(0x6397EA56)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I C:/Users/paulb/Documents/School/fall2022/ECE3710/github/ECE3710FinalProject/Include-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="537" -DSTM32L476xx-o ./uart.o -MD)
-I (stm32l476xx.h)(0x63936A8D)
-I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\core_cm4.h)(0x63936A8D)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x625325B8)
-I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_version.h)(0x63936A8D)
-I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_compiler.h)(0x63936A8D)
-I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_armclang.h)(0x63936A8D)
-I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\mpu_armv7.h)(0x63936A8D)
-I (C:\Users\paulb\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x60F03838)
-I (LCD.h)(0x63936A8D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625325B6)
 I (uart.h)(0x63936A8D)
-I (ADC.h)(0x63936A8D)
+I (ADC.h)(0x6397EB7D)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625325B6)
+I (DHT22.h)(0x63954879)
+I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x625325B6)
+F (.\uart.h)(0x63936A8D)()
+F (.\uart.c)(0x6397ECEC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I C:/Users/paulb/Documents/School/fall2022/ECE3710/github/ECE3710FinalProject/Include-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="537" -DSTM32L476xx-o ./uart.o -MD)
+I (stm32l476xx.h)(0x63936A8D)
+I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\core_cm4.h)(0x63936A8D)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x625325B8)
+I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_version.h)(0x63936A8D)
+I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_compiler.h)(0x63936A8D)
+I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_armclang.h)(0x63936A8D)
+I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\mpu_armv7.h)(0x63936A8D)
+I (C:\Users\paulb\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x60F03838)
+I (LCD.h)(0x6397EF3B)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625325B6)
+I (uart.h)(0x63936A8D)
+I (ADC.h)(0x6397EB7D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625325B6)
 I (DHT22.h)(0x63954879)
 I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x625325B6)
@@ -55,14 +61,14 @@ I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\I
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_armclang.h)(0x63936A8D)
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\mpu_armv7.h)(0x63936A8D)
 I (C:\Users\paulb\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x60F03838)
-I (LCD.h)(0x63936A8D)
+I (LCD.h)(0x6397EF3B)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625325B6)
 I (uart.h)(0x63936A8D)
-I (ADC.h)(0x63936A8D)
+I (ADC.h)(0x6397EB7D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625325B6)
 I (DHT22.h)(0x63954879)
-F (.\ADC.c)(0x63936A8D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I C:/Users/paulb/Documents/School/fall2022/ECE3710/github/ECE3710FinalProject/Include-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="537" -DSTM32L476xx-o ./adc.o -MD)
-I (ADC.h)(0x63936A8D)
+F (.\ADC.c)(0x6397EB7D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I C:/Users/paulb/Documents/School/fall2022/ECE3710/github/ECE3710FinalProject/Include-IC:/Users/paulb/AppData/Local/Arm/Packs/Keil/STM32L4xx_DFP/2.6.1/Drivers/CMSIS/Device/ST/STM32L4xx/Include-D__UVISION_VERSION="537" -DSTM32L476xx-o ./adc.o -MD)
+I (ADC.h)(0x6397EB7D)
 I (stm32l476xx.h)(0x63936A8D)
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\core_cm4.h)(0x63936A8D)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x625325B8)
@@ -71,6 +77,6 @@ I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\I
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\cmsis_armclang.h)(0x63936A8D)
 I (C:\Users\paulb\Documents\School\fall2022\ECE3710\github\ECE3710FinalProject\Include\mpu_armv7.h)(0x63936A8D)
 I (C:\Users\paulb\AppData\Local\Arm\Packs\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Include\system_stm32l4xx.h)(0x60F03838)
-I (LCD.h)(0x63936A8D)
+I (LCD.h)(0x6397EF3B)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625325B6)
-F (.\ADC.h)(0x63936A8D)()
+F (.\ADC.h)(0x6397EB7D)()

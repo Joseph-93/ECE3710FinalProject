@@ -167,8 +167,12 @@ void USART2_IRQHandler(void) {
 	}
 	else if(in == 'W'|| in == 'w')
 	{
+		int w_raw = 0;
+		float w_v = 0;
 		//USART2_Write('1');
-		USART2_fout((float)(read_Tref()));
+		w_raw = read_Wind();
+		USART2_fout((float)(w_raw));
+
 		//read temp value
 		//dispaly temp
 	}

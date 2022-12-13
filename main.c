@@ -21,8 +21,44 @@ static char pressure[50];
 void EXTI0_IRQHandler(void) {
 	if ((EXTI->PR1 & EXTI_PR1_PIF0) != 0) {
 		//read value
+		int rh_raw = 0;
+		float rh_dec = 0.0f;
+		int t_raw = 0;
+		float t_dec = 0.0f;
+		uint8_t data[41];
+		uint8_t out[40];
+		for(int i = 1; i <41; i++)
+		{
+			data[i]='q';
+		}
+		read_hdata(data);
+		for (int i=1;i<41;i++)
+		{
+			if(data[i]<100)
+			{
+				out[i-1] = 0;
+			}
+			else
+			{
+				out[i-1] = 1;
+			}
+		}
+		//rh part
+		for(int i = 0; i<=15;i++)
+		{
+			rh_raw += out[i]*pow(2,15-i);
+		}
+		rh_dec = (float)rh_raw/10.0f;
+		
+		for(int i = 16; i<32;i++)
+		{
+			t_raw += out[i]*pow(2,15-(i-16));
+		}
+		t_dec = (float)t_raw/10.0f;
+		//display value
 		LCD_Clear();
-		LCD_DisplayString(0, (unsigned char*)"Temperature: ");
+		LCD_DisplayString(0, (unsigned char*)"Temperature: (C)");
+		LCD_Displayfloat(1, t_dec);
 		EXTI->PR1 |= EXTI_PR1_PIF0;
 	}
 	return;
@@ -32,8 +68,45 @@ void EXTI0_IRQHandler(void) {
 void EXTI1_IRQHandler(void) {
 	if ((EXTI->PR1 & EXTI_PR1_PIF1) != 0) {
 		//read value
+		//read value
+		int rh_raw = 0;
+		float rh_dec = 0.0f;
+		int t_raw = 0;
+		float t_dec = 0.0f;
+		uint8_t data[41];
+		uint8_t out[40];
+		for(int i = 1; i <41; i++)
+		{
+			data[i]='q';
+		}
+		read_hdata(data);
+		for (int i=1;i<41;i++)
+		{
+			if(data[i]<100)
+			{
+				out[i-1] = 0;
+			}
+			else
+			{
+				out[i-1] = 1;
+			}
+		}
+		//rh part
+		for(int i = 0; i<=15;i++)
+		{
+			rh_raw += out[i]*pow(2,15-i);
+		}
+		rh_dec = (float)rh_raw/10.0f;
+		
+		for(int i = 16; i<32;i++)
+		{
+			t_raw += out[i]*pow(2,15-(i-16));
+		}
+		t_dec = (float)t_raw/10.0f;
+		//display value
 		LCD_Clear();
-		LCD_DisplayString(0, (unsigned char*)"Humidity: X");
+		LCD_DisplayString(0, (unsigned char*)"Humidity: (%)");
+		LCD_Displayfloat(1, rh_dec);
 		EXTI->PR1 |= EXTI_PR1_PIF1;
 	}
 	return;

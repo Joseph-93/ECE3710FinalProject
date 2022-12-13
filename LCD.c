@@ -1,5 +1,11 @@
 #include "LCD.h"
 #include "stm32l476xx.h"
+#include <string.h>
+#include "uart.h"
+#include "ADC.h"
+#include <stdio.h>
+#include "DHT22.h"
+#include <math.h>
 #define N 1800
 
 /********************
@@ -155,5 +161,15 @@ void LCD_DisplayString(unsigned int line, unsigned char *ptr) {
 		LCD_WriteData(ptr[n]);
 		n++;
 	}
-	
+}
+
+void LCD_Displayfloat(unsigned int line, float in)
+{
+	unsigned char out[50];
+	for(int i = 0; i <=50; i++)
+		{
+			out[i]=0;
+		}
+	sprintf(out, "%f" , in);
+	LCD_DisplayString(line, out);
 }

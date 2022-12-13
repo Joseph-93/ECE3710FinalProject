@@ -97,7 +97,7 @@ void WindSpeed_setup()
 	while((ADC2->ISR & ADC_ISR_ADRDY) == 0);
 }
 	
-uint32_t read_Tref(){
+uint32_t read_Wind(){
 	//Read ADC
 	uint32_t result = 0;
 	ADC2->CR |= 0x00000004; //Start adc conversion
